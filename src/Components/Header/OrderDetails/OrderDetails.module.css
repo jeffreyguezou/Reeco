@@ -1,0 +1,50 @@
+.orderHeader {
+  padding: 20px 0;
+  border-bottom: 1px solid #989898;
+}
+.orderDetails {
+  padding: 0 10%;
+}
+.orderBreadcrumb {
+  display: flex;
+  align-items: flex-end;
+  font-size: small;
+  color: #989898;
+}
+.order {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 10px;
+}
+.selectedOrder {
+  text-decoration: underline;
+}
+.currentOrder {
+  font-weight: bolder;
+  font-size: larger;
+}
+.orderSummary {
+  padding: 10px;
+  display: flex;
+  margin-top: 20px;
+  border: 1px solid lightgray;
+  justify-content: space-evenly;
+  border-radius: 10px;
+}
+.summaryFields {
+  align-items: center;
+  display: flex;
+  width: 350px;
+  flex-wrap: wrap;
+  flex-direction: column;
+  padding: 10px;
+  border-right: 1px solid lightgray;
+}
+.summaryFields:last-of-type {
+  border-right: 0;
+}
+.fieldTitle {
+  font-weight: bold;
+  color: #989898;
+}

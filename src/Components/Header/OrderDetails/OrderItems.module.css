@@ -1,0 +1,51 @@
+.orderItemsContainer {
+  margin-top: 10px;
+  border: 1px solid lightgray;
+  box-shadow: 2px 2px 2px lightgray;
+  border-radius: 10px;
+}
+.table {
+  border: 1px solid lightgray;
+}
+.itemsUtilities {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+.rightItems {
+  display: flex;
+  gap: 25px;
+  align-items: baseline;
+}
+.tableHeader {
+  display: flex;
+  justify-content: space-evenly;
+  border-bottom: 1px solid lightgray;
+}
+.tableField {
+  width: 250px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+}
+.headerFields {
+  width: 250px;
+  padding: 20px;
+}
+.tableField:nth-of-type(1) {
+  width: 400px;
+}
+.tableField:last-of-type {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.statusOption {
+  display: flex;
+  gap: 10px;
+}
+
+.headerFields:nth-of-type(1) {
+  width: 400px;
+}
