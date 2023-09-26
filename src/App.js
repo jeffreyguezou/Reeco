@@ -1,6 +1,6 @@
 import "./App.css";
 import Header from "./Components/Header/Header";
-import OrderDetails from "./Components/Header/OrderDetails/OrderDetails";
+import OrderDetails from "./Components/OrderDetails/OrderDetails";
 
 function App() {
   return (

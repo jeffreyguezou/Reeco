@@ -2,13 +2,12 @@ import classes from "./OrderItems.module.css";
 import { AiOutlineCheck } from "react-icons/ai";
 import { RxCross2 } from "react-icons/rx";
 import { useDispatch } from "react-redux";
-import { changeStatus } from "../../Redux/Orders";
+import { approveStatus } from "../Redux/Orders";
 const ItemRow = (props) => {
   const dispatch = useDispatch();
   const status = props.status === "unset" ? "" : "Approved";
-  const approveHandler = () => {
-    console.log("entered");
-    dispatch(changeStatus({ status: "Approved" }));
+  const approveHandler = (name) => {
+    dispatch(approveStatus({ name: name, status: "Approved" }));
   };
 
   return (
@@ -22,7 +21,7 @@ const ItemRow = (props) => {
         <span>{status}</span>
         <div className={classes.statusOption}>
           <AiOutlineCheck
-            onClick={approveHandler}
+            onClick={() => approveHandler(props.name)}
             style={{ cursor: "pointer" }}
           />
           <RxCross2 style={{ cursor: "pointer" }} />

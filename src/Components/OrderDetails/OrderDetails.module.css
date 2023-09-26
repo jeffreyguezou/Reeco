@@ -5,6 +5,25 @@
 .orderDetails {
   padding: 0 10%;
 }
+.orderBtnSection {
+  display: flex;
+  gap: 20px;
+}
+.backBtn {
+  border: 2px solid #1e633f;
+  color: #1e633f;
+  background-color: white;
+  border-radius: 10px;
+  padding: 5px;
+  min-width: 60px;
+}
+.approveBtn {
+  border: 2px solid #1e633f;
+  color: white;
+  background-color: #1e633f;
+  border-radius: 10px;
+  padding: 5px;
+}
 .orderBreadcrumb {
   display: flex;
   align-items: flex-end;

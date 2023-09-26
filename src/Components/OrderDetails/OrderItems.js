@@ -6,10 +6,10 @@ const OrderItems = () => {
     <div className={classes.orderItemsContainer}>
       <div className={classes.itemsUtilities}>
         <div>
-          <input type="text"></input>
+          <input placeholder="search" type="text"></input>
         </div>
         <div className={classes.rightItems}>
-          <button>Add item</button>
+          <button className={classes.addBtn}>Add item</button>
           <BsPrinter style={{ color: "#437C5F" }} />
         </div>
       </div>

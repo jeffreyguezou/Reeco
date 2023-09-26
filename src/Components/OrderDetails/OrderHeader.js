@@ -10,9 +10,9 @@ const OrderHeader = () => {
       </div>
       <div className={styles.order}>
         <span className={styles.currentOrder}>Order-123456</span>
-        <div>
-          <button>Back</button>
-          <button>Approve order</button>
+        <div className={styles.orderBtnSection}>
+          <button className={styles.backBtn}>Back</button>
+          <button className={styles.approveBtn}>Approve order</button>
         </div>
       </div>
     </div>

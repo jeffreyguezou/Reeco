@@ -49,3 +49,11 @@
 .headerFields:nth-of-type(1) {
   width: 400px;
 }
+.addBtn {
+  border: 2px solid #1e633f;
+  color: #1e633f;
+  background-color: white;
+  border-radius: 10px;
+  padding: 5px;
+  min-width: 60px;
+}

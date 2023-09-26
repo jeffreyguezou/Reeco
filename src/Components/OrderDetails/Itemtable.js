@@ -3,9 +3,8 @@ import { useSelector } from "react-redux";
 import ItemRow from "./ItemRow";
 
 const ItemTable = () => {
-  const items = useSelector((state) => state.changeStatus.Items);
+  const items = useSelector((state) => state.changeStatus);
   const itemsArray = [];
-  console.log(items.Item1);
   for (let key in items) {
     itemsArray.push(items[key]);
   }

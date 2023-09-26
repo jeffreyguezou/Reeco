@@ -5,18 +5,22 @@ const response = await fetch(
 );
 
 const fetchedOrders = await response.json();
-console.log(fetchedOrders);
 initialOrders = fetchedOrders.Order1;
-console.log(initialOrders);
+const initialItems = initialOrders.Items;
+console.log(initialItems);
 
 export const orderSlice = createSlice({
   name: "orders",
-  initialState: initialOrders,
+  initialState: initialItems,
   reducers: {
-    changeStatus(state, action) {
-      console.log(state, action.payload);
+    approveStatus(state, action) {
+      for (let item in state) {
+        if (state[item].Name === action.payload.name) {
+          state[item].Status = "Approved";
+        }
+      }
     },
   },
 });
-export const { changeStatus } = orderSlice.actions;
+export const { approveStatus } = orderSlice.actions;
 export default orderSlice.reducer;
