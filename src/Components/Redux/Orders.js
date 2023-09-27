@@ -14,9 +14,10 @@ export const orderSlice = createSlice({
   initialState: initialItems,
   reducers: {
     approveStatus(state, action) {
+      console.log(action.payload);
       for (let item in state) {
         if (state[item].Name === action.payload.name) {
-          state[item].Status = "Approved";
+          state[item].Status = action.payload.status;
         }
       }
     },
