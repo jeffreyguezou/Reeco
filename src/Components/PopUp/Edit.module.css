@@ -1,0 +1,61 @@
+.editBox {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.productImg {
+  width: 100px;
+  height: 100px;
+}
+.editName {
+  font-weight: bold;
+}
+.editBrand {
+  color: gray;
+}
+.editContent {
+  display: flex;
+  gap: 20px;
+}
+.editFields {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+.reasons {
+  border: 1px dashed gray;
+  border-radius: 5px;
+  font-size: 12px;
+  cursor: pointer;
+  padding: 5px;
+}
+.allReasons {
+  display: flex;
+  gap: 10px;
+}
+.editBtnSection {
+  display: flex;
+  padding: 20px;
+  justify-content: flex-end;
+  gap: 20px;
+}
+.editBtn {
+  border: 2px solid #1e633f;
+  color: white;
+  background-color: #1e633f;
+  border-radius: 10px;
+  padding: 5px;
+  min-width: 60px;
+  cursor: pointer;
+}
+.cancelBtn {
+  border: 2px solid #1e633f;
+  color: #1e633f;
+  background-color: white;
+  border-radius: 10px;
+  padding: 5px;
+  min-width: 60px;
+  cursor: pointer;
+}
