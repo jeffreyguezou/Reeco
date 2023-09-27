@@ -3,34 +3,58 @@ import { AiOutlineCheck } from "react-icons/ai";
 import { RxCross2 } from "react-icons/rx";
 import { useDispatch } from "react-redux";
 import { approveStatus } from "../Redux/Orders";
-import { showPopUp } from "../Redux/PopUpSlice";
+import { showPopUp, showEditWindow } from "../Redux/PopUpSlice";
 import { useSelector } from "react-redux";
 import Dialog from "../PopUp/Dialog";
+import Edit from "../PopUp/Edit";
+import { useRef } from "react";
+import appleImg from "../../Assets/Apple Green Smith.png";
 const ItemRow = (props) => {
   const dispatch = useDispatch();
   const isShowPopUp = useSelector((state) => state.showPopUp.isShowPopUp);
+  const isShowEditWindow = useSelector(
+    (state) => state.showEditWindow.isShowEditWindow
+  );
+  const currentData = useRef(null);
   const status = props.status;
   const approveHandler = (name) => {
-    dispatch(approveStatus({ name: name, status: "Approved" }));
+    dispatch(approveStatus({ name, status: "Approved" }));
   };
   const showPopUpHandler = (name) => {
+    currentData.current = name;
     dispatch(showPopUp({ isShowPopUp: true }));
-    window.currentName = name;
+  };
+  const closePopUpHandler = () => {
+    dispatch(showPopUp({ isShowPopUp: false }));
   };
   const setUrgentHandler = () => {
     dispatch(
-      approveStatus({ name: window.currentName, status: "Waiting - Urgent" })
+      approveStatus({ name: currentData.current, status: "Waiting - Urgent" })
     );
     dispatch(showPopUp({ isShowPopUp: false }));
   };
   const setWaitingHandler = () => {
-    dispatch(approveStatus({ name: window.currentName, status: "Waiting" }));
+    dispatch(approveStatus({ name: currentData.current, status: "Waiting" }));
     dispatch(showPopUp({ isShowPopUp: false }));
+  };
+  const openEditHandler = (props) => {
+    window.editProps = props;
+    dispatch(showEditWindow({ isShowEditWindow: true }));
+  };
+  const closeEditBox = () => {
+    dispatch(showEditWindow({ isShowEditWindow: false }));
   };
   return (
     <>
       <div className={classes.tableHeader}>
-        <div className={classes.tableField}>{props.name}</div>
+        <div className={classes.tableField}>
+          <img
+            className={classes.productImg}
+            src={appleImg}
+            alt="productImg"
+          ></img>
+          {props.name}
+        </div>
         <div className={classes.tableField}>{props.brand}</div>
         <div className={classes.tableField}>{props.price}</div>
         <div className={classes.tableField}>{props.quantity}</div>
@@ -68,6 +92,12 @@ const ItemRow = (props) => {
               onClick={() => showPopUpHandler(props.name)}
               style={{ cursor: "pointer" }}
             />
+            <div
+              className={classes.editLink}
+              onClick={() => openEditHandler(props)}
+            >
+              Edit
+            </div>
           </div>
         </div>
       </div>
@@ -75,6 +105,17 @@ const ItemRow = (props) => {
         <Dialog
           setUrgentHandler={setUrgentHandler}
           setWaitingHandler={setWaitingHandler}
+          closePopUpHandler={closePopUpHandler}
+        />
+      )}
+      {isShowEditWindow && (
+        <Edit
+          name={window.editProps.name}
+          brand={window.editProps.brand}
+          quantity={window.editProps.quantity}
+          price={window.editProps.price}
+          total={window.editProps.total}
+          closeEditBox={closeEditBox}
         />
       )}
     </>

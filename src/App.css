@@ -39,6 +39,8 @@
   font-weight: bold;
   text-align: center;
   padding-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .btnSection {
@@ -46,4 +48,12 @@
   justify-content: flex-end;
   gap: 20px;
   padding-top: 20px;
+}
+.dialogTitle {
+  display: flex;
+  justify-content: space-between;
+}
+.closeX {
+  font-weight: 400;
+  cursor: pointer;
 }

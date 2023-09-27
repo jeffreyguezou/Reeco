@@ -36,7 +36,7 @@
   width: 400px;
 }
 .tableField:nth-of-type(1) {
-  width: 400px;
+  width: 600px;
 }
 .tableField:last-of-type {
   display: flex;
@@ -51,7 +51,7 @@
 }
 
 .headerFields:nth-of-type(1) {
-  width: 400px;
+  width: 600px;
 }
 .addBtn {
   border: 2px solid #1e633f;
@@ -78,4 +78,17 @@
   color: white;
   border-radius: 5px;
   padding: 5px 10px;
+}
+.editLink {
+  text-decoration: underline;
+  cursor: pointer;
+}
+.productImg {
+  width: 100px;
+  height: 100px;
+}
+.searchBox {
+  border-radius: 10px;
+  border-color: lightgray;
+  padding: 5px;
 }

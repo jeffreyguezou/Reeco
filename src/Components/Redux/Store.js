@@ -5,6 +5,7 @@ const store = configureStore({
   reducer: {
     changeStatus: statusReducer,
     showPopUp: showPopUpReducer,
+    showEditWindow: showPopUpReducer,
   },
 });
 export default store;
