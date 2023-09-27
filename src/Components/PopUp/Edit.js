@@ -8,11 +8,18 @@ const Edit = (props) => {
   const propPrice = props.price;
   const [quantity, setQuantity] = useState(propQty);
   const [price, setPrice] = useState(propPrice);
+  const [isQuantityEdited, setIsQuantityEdited] = useState(false);
+  const [isPriceEdited, setIsPriceEdited] = useState(false);
   const priceChangeHandler = (event) => {
     setPrice(event.target.value);
+    setIsPriceEdited(true);
   };
   const quantityChangeHandler = (event) => {
     setQuantity(event.target.value);
+    setIsQuantityEdited(true);
+  };
+  const editClickHandler = () => {
+    props.editClickHandler(isPriceEdited, isQuantityEdited);
   };
   return (
     <PopUp>
@@ -63,7 +70,9 @@ const Edit = (props) => {
           <button onClick={props.closeEditBox} className={classes.cancelBtn}>
             Cancel
           </button>
-          <button className={classes.editBtn}>Edit</button>
+          <button onClick={editClickHandler} className={classes.editBtn}>
+            Edit
+          </button>
         </div>
       </div>
     </PopUp>

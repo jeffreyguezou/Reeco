@@ -7,34 +7,36 @@ import { showPopUp, showEditWindow } from "../Redux/PopUpSlice";
 import { useSelector } from "react-redux";
 import Dialog from "../PopUp/Dialog";
 import Edit from "../PopUp/Edit";
-import { useRef } from "react";
 import appleImg from "../../Assets/Apple Green Smith.png";
+import { useState } from "react";
 const ItemRow = (props) => {
+  const [isPriceEdited, setIsPriceEdited] = useState(false);
+  const [isQuantityEdited, setIsQuantityEdited] = useState(false);
   const dispatch = useDispatch();
   const isShowPopUp = useSelector((state) => state.showPopUp.isShowPopUp);
   const isShowEditWindow = useSelector(
     (state) => state.showEditWindow.isShowEditWindow
   );
-  const currentData = useRef(null);
+
   const status = props.status;
   const approveHandler = (name) => {
     dispatch(approveStatus({ name, status: "Approved" }));
   };
   const showPopUpHandler = (name) => {
-    currentData.current = name;
     dispatch(showPopUp({ isShowPopUp: true }));
+    window.current = name;
   };
   const closePopUpHandler = () => {
     dispatch(showPopUp({ isShowPopUp: false }));
   };
   const setUrgentHandler = () => {
     dispatch(
-      approveStatus({ name: currentData.current, status: "Waiting - Urgent" })
+      approveStatus({ name: window.current, status: "Waiting - Urgent" })
     );
     dispatch(showPopUp({ isShowPopUp: false }));
   };
   const setWaitingHandler = () => {
-    dispatch(approveStatus({ name: currentData.current, status: "Waiting" }));
+    dispatch(approveStatus({ name: window.current, status: "Waiting" }));
     dispatch(showPopUp({ isShowPopUp: false }));
   };
   const openEditHandler = (props) => {
@@ -42,6 +44,11 @@ const ItemRow = (props) => {
     dispatch(showEditWindow({ isShowEditWindow: true }));
   };
   const closeEditBox = () => {
+    dispatch(showEditWindow({ isShowEditWindow: false }));
+  };
+  const editClickHandler = (isPriceEdited, isQuantityEdited) => {
+    setIsPriceEdited(isPriceEdited);
+    setIsQuantityEdited(isQuantityEdited);
     dispatch(showEditWindow({ isShowEditWindow: false }));
   };
   return (
@@ -62,21 +69,33 @@ const ItemRow = (props) => {
         <div className={classes.tableField}>
           {status === "Approved" ? (
             <div className={classes.approvedPill}>
-              <span>{status}</span>
+              <span>
+                {status}
+                {isPriceEdited ? "Price Changed" : ""}
+                {isQuantityEdited ? "Quantity Changed" : ""}
+              </span>
             </div>
           ) : (
             <></>
           )}
           {status === "Waiting - Urgent" ? (
             <div className={classes.urgentPill}>
-              <span>{status}</span>
+              <span>
+                {status}
+                {isPriceEdited ? "Price Changed" : ""}
+                {isQuantityEdited ? "Quantity Changed" : ""}
+              </span>
             </div>
           ) : (
             <></>
           )}
           {status === "Waiting" ? (
             <div className={classes.waitingPill}>
-              <span>{status}</span>
+              <span>
+                {status}
+                {isPriceEdited ? "Price Changed" : ""}
+                {isQuantityEdited ? "Quantity Changed" : ""}
+              </span>
             </div>
           ) : (
             <></>
@@ -116,6 +135,7 @@ const ItemRow = (props) => {
           price={window.editProps.price}
           total={window.editProps.total}
           closeEditBox={closeEditBox}
+          editClickHandler={editClickHandler}
         />
       )}
     </>
